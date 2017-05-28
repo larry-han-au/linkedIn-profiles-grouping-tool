@@ -48,11 +48,7 @@ def clustering(users):
   names = list(map(lambda x: x.name, users))
   descriptions = list(map(lambda x: x.description, users))
   clean_descritpions = list(map(lambda x: clean(x), descriptions))
-  vectorizer = CountVectorizer(analyzer = "word",   \
-                             tokenizer = None,    \
-                             preprocessor = None, \
-                             stop_words = None,   \
-                             max_features = 5000) 
+  vectorizer = CountVectorizer(analyzer = "word", tokenizer = None, preprocessor = None, stop_words = None, max_features = 5000) 
   train_data_features = vectorizer.fit_transform(clean_descritpions)
   train_data_features = train_data_features.toarray()
   pca = PCA(n_components = 2)
