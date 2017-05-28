@@ -10,10 +10,10 @@ from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 import json
 
-application = Flask(__name__)
-application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
-application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(application)
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
 # Model fucntions
 class User(db.Model):
@@ -114,12 +114,12 @@ def writeThroughDatebase(data):
       return
 
 # Router and Controller fucntions
-@application.route("/")
+@app.route("/")
 def index():
   res = profiles_clusters()
   return render_template('index.html', data=res)
 
-@application.route("/query", methods=["POST"])
+@app.route("/query", methods=["POST"])
 def query():
   name = request.form['query'].strip()
   data = searchProfiles(name, 1)
@@ -144,5 +144,5 @@ def searchProfiles(query, index):
 
 
 if __name__ == "__main__":
-  application.debug = True
-  application.run()
+  app.debug = True
+  app.run()
