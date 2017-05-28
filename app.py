@@ -125,8 +125,8 @@ def query():
 def searchProfiles(query, index):
   splitted_list = query.split()
   formatted_query = "+".join(splitted_list)
-  api_key = "AIzaSyDPmT0Arh7zNjGIugvXU2Fgv-jYHhJmAPY"
-  cx = "015718152841429576125:fm39xw_dpui"
+  api_key = "XXXXXXXXXXXXXXXXXXXXXXX"
+  cx = "XXXXXXXXXXXXXXXXXXXXXXXXXX"
   base_url = "https://www.googleapis.com/customsearch/v1?"
   constructed_url = base_url + "key=" + api_key + "&q=" + formatted_query + "&cx=" + cx
   if index:
